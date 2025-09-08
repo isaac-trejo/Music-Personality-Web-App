@@ -1,0 +1,13 @@
+
+Flask==3.1.2
+spotipy==2.25.1
+python-dotenv==1.1.1
+
+npm==11.5.2
+node==22.17.1
+
+# NLP
+huggingface_hub==0.34.4
+
+# Genius 
+lyricsgenius==3.7.2
