@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
     <ul>
-        {% for song, artist in track_info.items() %}
+        {% for song, artist in track_info %}
             <li>{{song}}: {{artist}}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

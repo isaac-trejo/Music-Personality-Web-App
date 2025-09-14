@@ -14,7 +14,7 @@ hf_client = InferenceClient(
 """ Input is lyrics.
     Returns list of tuples of emotional probabilities 
     *Note: Max token input = 512, roughly 2048 chars """
-def get_emotion_info(lyrics: str) -> list | None:
+def lyric_emotion_info(lyrics: str) -> list | None:
     if not lyrics:
         return None
 

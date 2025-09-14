@@ -1,23 +1,18 @@
-import os
+def normalize_emotions_percent(emotion_list: list) -> list | None:
+    if not emotion_list:
+        return None
+    elif len(emotion_list) < 2:
+        return emotion_list
+    
+    normalized_emotions = list()
 
-from dotenv import load_dotenv
-from huggingface_hub import InferenceClient
+    total_score = sum(score for _, score in emotion_list)
+    if total_score == 0:
+        return [(emotion, 0.0) for emotion, _ in emotion_list]
+    
+    normalized_emotions = [
+        (emotion, (score / total_score) * 100)
+        for emotion, score in emotion_list
+    ]
 
-load_dotenv()
-
-def main():
-    hf_token = os.getenv("HF_TOKEN")
-    hf_client = InferenceClient(
-        provider="hf-inference",
-        api_key=hf_token,
-    )
-
-
-    result = hf_client.text_classification(
-        "The industry can hate me, fuck 'em all and they mama",
-        model="SamLowe/roberta-base-go_emotions",
-    )
-    emotion_info = [(emotion['label'], emotion['score']) for emotion in result]
-    return emotion_info
-
-main()
+    return normalized_emotions
