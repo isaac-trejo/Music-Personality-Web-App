@@ -14,15 +14,17 @@ hf_client = InferenceClient(
 """ Input is lyrics.
     Returns list of tuples of emotional probabilities 
     *Note: Max token input = 512, roughly 2048 chars """
-def lyric_emotion_info(lyrics: str) -> list | None:
-    if not lyrics:
+def lyric_emotion_info(chunked_lyrics: list) -> list | None:
+    if not chunked_lyrics:
         return None
-
-    result = hf_client.text_classification(
-        text=lyrics,
-        model="SamLowe/roberta-base-go_emotions",
-    )
-    emotion_list = [(emotion['label'], emotion['score']) for emotion in result]
+    
+    emotion_list = list()
+    for chunk in chunked_lyrics:
+        emotion_result = hf_client.text_classification(
+            text=chunk,
+            model="SamLowe/roberta-base-go_emotions",
+        )
+    emotion_list = [(emotion['label'], emotion['score']) for emotion in emotion_result]
     print(emotion_list)
 
     return emotion_list 

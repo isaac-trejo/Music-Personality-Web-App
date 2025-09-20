@@ -6,11 +6,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>Spotify Personality Analyzer</h1>
-        <p>Discover your music personality through your Spotify listening habits</p>
-      </header>
-      
-      <div className="profile-bar">
+        <div className="profile-bar">
         <div className="profile-info">
           <div className="profile-image">
             <img src={profileImage} alt="Profile" />
@@ -19,6 +15,7 @@ function App() {
         </div>
         <button className="connect-btn">Connect to Spotify</button>
       </div>
+      </header>
       
       <nav className="navbar">
         <ul>
@@ -28,6 +25,9 @@ function App() {
         </ul>
       </nav>
       
+      <h1>Spotify Personality Analyzer</h1>
+      <p>Discover your personality through your Spotify listening habits</p>
+
       <main>        
         <div className="chart-section">
           <PersonalityRadarChart />
@@ -35,7 +35,7 @@ function App() {
       </main>
       
       <footer>
-        <p>&copy; 2024 Spotify Personality Analyzer</p>
+        {/* TODO: Add extra info */}
       </footer>
     </>
   )
