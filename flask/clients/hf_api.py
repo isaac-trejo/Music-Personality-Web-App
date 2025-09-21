@@ -18,13 +18,13 @@ def lyric_emotion_info(chunked_lyrics: list) -> list | None:
     if not chunked_lyrics:
         return None
     
-    emotion_list = list()
+    emotion_pair_list = list()
     for chunk in chunked_lyrics:
         emotion_result = hf_client.text_classification(
             text=chunk,
             model="SamLowe/roberta-base-go_emotions",
         )
-    emotion_list = [(emotion['label'], emotion['score']) for emotion in emotion_result]
-    print(emotion_list)
-
-    return emotion_list 
+        emotion_pair_list = [(emotion['label'], emotion['score']) for emotion in emotion_result]
+    
+    print(emotion_pair_list)
+    return emotion_pair_list 
