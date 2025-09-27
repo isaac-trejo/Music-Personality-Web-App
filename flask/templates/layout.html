@@ -3,10 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%}{% endblock %}</title>
+    <title>{% block title%}Spotify Personality Analyzer{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #404040;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background-color: #404040;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .username {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .connect-btn {
+            background-color: #1db954;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .connect-btn:hover {
+            background-color: #1ed760;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid #404040;
+            padding: 0 2rem;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .navbar li {
+            padding: 1rem 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #b3b3b3;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+    </style>
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <div class="header">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/60/404040/ffffff?text=User" alt="Profile">
+            </div>
+            <span class="username">John Doe</span>
+        </div>
+        <button class="connect-btn">Connect to Spotify</button>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#charts">Charts</a></li>
+            <li><a href="#stats">Stats</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block body %}
+        {% endblock %}
+    </div>
 </body>
 </html>

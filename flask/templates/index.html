@@ -1,13 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Home
+    Home - Spotify Personality Analyzer
 {% endblock %}
 
 {% block body %}
-    <ul>
-        {% for song, artist in track_info %}
-            <li>{{song}}: {{artist}}</li>
-        {% endfor %}
-    </ul>
+    <div style="text-align: center; padding: 2rem;">
+        <h1>Welcome to Spotify Personality Analyzer</h1>
+        <p>Discover your music personality through your listening habits</p>
+    </div>
 {% endblock %}
